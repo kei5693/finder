@@ -77,6 +77,7 @@ html, body, #app {
   width:42px;
   height:42px;
   background-position: 0 0;
+  transform-origin: 50% 100%;
 }
 #introCont > .right:after {
   content:'';
@@ -86,14 +87,19 @@ html, body, #app {
   width:18px;
   height:15px;
   background-position: -75px 0;
-  }
+}
+#introCont.on > .right > a {
+  animation: close_step03_02 infinite 1.5s alternate;
+  animation-delay: 3s;
+}
 #introCont.on > .right:after {
-  animation-name: close_step02, close_step03;
+  animation-name: close_step02, close_step03_01;
   animation-iteration-count: 1, infinite;
-  animation-direction: normal, alternate;
-  animation-duration: 0.5s, 1s;
+  animation-direction: normal, normal;
+  animation-duration: 0.5s, 2s;
   animation-fill-mode: forwards;
   animation-delay: 1s, 2s;
+  animation-timing-function: ease, cubic-bezier(0.63, 0.12, 0, 1);
 }
 
 @keyframes close_step01{
@@ -105,8 +111,15 @@ html, body, #app {
   60%   {top:-18px;right:0;}
   100%  {top:-12px;right:0;}
 }
-@keyframes close_step03{
-  0%,30%    {top:-12px;right:0;}
-  50%,100%  {top:-15px;right:0;}
+@keyframes close_step03_01{
+  0%    {top:-12px;right:0;}
+  10%   {top:-15px;right:0;}
+  20%   {top:-12px;right:0;}
+  30%   {top:-15px;right:0;}
+  40%,100%   {top:-12px;right:0;}
+}
+@keyframes close_step03_02{
+  0%    {transform: rotate(0deg);}
+  80%,100%  {transform: rotate(-6deg);}
 }
 </style>
